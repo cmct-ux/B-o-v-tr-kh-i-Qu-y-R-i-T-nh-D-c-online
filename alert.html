@@ -1,0 +1,42 @@
+<!-- alert.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cảnh báo Quấy rối</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Baloo 2', cursive; text-align: center; background: linear-gradient(to bottom, #ffe4e1, #fff0f5); padding: 50px; }
+h1 { color: #ff0000; font-size: 28px; }
+ul { text-align: left; display: inline-block; margin-top: 20px; font-size: 16px; }
+button { padding: 12px 25px; font-size: 16px; cursor: pointer; margin-top: 20px; background-color: #ff4500; color: white; border: none; border-radius: 8px; transition: 0.3s; }
+button:hover { background-color: #e63900; }
+.sticker { width: 100px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h1>Đối phương đang quấy rối tình dục bạn!</h1>
+<p>Hãy thực hiện một số giải pháp sau:</p>
+<ul>
+  <li>Chặn người gửi tin nhắn.</li>
+  <li>Không trả lời các tin nhắn quấy rối.</li>
+  <li>Thông báo ngay cho phụ huynh hoặc người giám hộ.</li>
+  <li>Lưu lại bằng chứng để báo cáo nếu cần.</li>
+  <li>Giữ bình tĩnh và không chịu áp lực từ đối phương.</li>
+</ul>
+<button onclick="notifyParent()">Gửi cảnh báo đến phụ huynh</button>
+<div>
+<img src="https://i.ibb.co/4J4VtDf/cute-warning.png" class="sticker" alt="Sticker cảnh báo">
+</div>
+
+<script>
+function notifyParent() {
+  const phone = localStorage.getItem('parentPhone');
+  if (!phone) { alert("Không tìm thấy số điện thoại phụ huynh!"); return; }
+  const smsMessage = encodeURIComponent("Con bạn đang nhận tin nhắn quấy rối tình dục online. Vui lòng can thiệp ngay!");
+  window.location.href = `sms:${phone}?body=${smsMessage}`;
+}
+</script>
+</body>
+</html>
